@@ -7,6 +7,13 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('login');
+  this.route('reports');
+  // this.route('search', function(){
+  //    this.route( 'results', { path: '/:searchType', queryParams: ['email']})
+  // });
+  this.route('search', { queryParams: ['email']})
+  this.route('report');
 });
 
 export default Router;

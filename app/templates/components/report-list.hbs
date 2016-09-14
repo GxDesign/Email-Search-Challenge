@@ -1,0 +1,9 @@
+<h2>{{ title }}</h2>
+
+<ul>
+  {{#each reports as |report|}}
+    <li>{{report}}</li>
+  {{/each}}
+</ul>
+
+{{yield}}

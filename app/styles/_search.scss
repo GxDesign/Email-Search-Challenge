@@ -1,0 +1,25 @@
+#search-results {
+	.panel {
+	    color: #333;
+	    padding: 20px;
+	    display: block;
+
+	    .thumbnail {
+	    	width: 64px;
+		    height: 64px;
+		    border-radius: 32px;
+		    background-color: #ddd;
+		    color: #FFF;
+		    margin: 0;
+		    text-align: center;
+		    padding-top: 8px;
+		    border: none;
+	    }
+
+	    .glyphicon-chevron-right.gly-lg {
+		    font-size: 28px;
+		    color: #ddd;
+		    font-weight: 400;
+		}
+	}
+}

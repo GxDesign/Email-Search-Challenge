@@ -1,0 +1,14 @@
+@import 'bootstrap';
+@import 'navbar';
+@import 'loader';
+@import 'search';
+
+* { font-family: Lato,sans-serif; }
+
+.nopadding {
+   padding: 0 !important;
+}
+
+main {
+	margin-top: 80px;
+}

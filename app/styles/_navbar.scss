@@ -1,0 +1,164 @@
+nav {
+	position: relative;
+    background: #fff;
+    height: 80px;
+    border-bottom: 0 !important;
+    
+    &::before {
+    	content: "";
+    	display: block !important;
+    	width: 100%;
+    	height: 100%;
+    	position: absolute;
+    	left: 0;
+    	top:0;
+    	background: linear-gradient(135deg,rgba(53,25,89,.92) 0,
+          rgba(79,24,93,.92) 50%,rgba(31,47,107,.92) 100%);
+    }
+
+    & > .container {
+    	z-index: 300;
+    	position:relative;
+    }
+
+    .navbar-brand {
+        margin-top: 13px;
+    }
+
+	.logo-main {
+		text-indent: -999px;
+		white-space: nowrap;
+		display: block;
+		width: 151px;
+	    height: 21px;
+        padding: 15px 0;
+		overflow: hidden;
+		background: url("/assets/img/beenverified-logo.svg") no-repeat;
+		background-size: contain;
+	}
+
+    .nav-menu {
+        position: absolute;
+        width: 100%;
+        text-align: center; 
+    }
+
+    .nav-tabs#search-options {
+        text-align: center;
+        border-bottom: none;
+        width: 320px;
+
+        & > li {
+            display: block;
+            margin: 0;
+            height: 80px;
+            
+            & > a:focus { background: transparent; }
+
+            a { 
+                color: #fff;
+                border-radius: 0;
+                text-align: center;
+                border-left: 1px solid #7E6F9C;
+                padding: 7px 0;
+                margin: 0;
+                width: 80px;
+                height: 80px;
+                line-height: 20px;
+            }
+
+            &.disabled a { color: #b6b6b6; }
+
+            a {
+                border-bottom: none;
+                border-top: 0;
+                border-bottom: 0; 
+            }
+
+            &.active a, &:not(.disabled) a:hover {
+                border-color: #7E6F9C;
+                background-color: #8B519A;
+            }
+
+
+            &:not(:last-child) a {
+                border-right: 0 !important
+            }
+
+            &:last-child a {
+                border-right: 1px solid #7E6F9C;
+            }
+
+            .glyphicon { font-size: 1.3em; }
+        }
+
+
+        & > li.active > a .arrow-down, 
+        & > li.active > a:focus .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #8B519A;
+            position: relative;
+            top: 16px;
+            z-index: 300;
+            margin-bottom: -200px;
+        }
+    }
+
+    .nav-tabs li.disabled {
+            background: rgba(0,0,0,0.3);
+    }
+}
+
+#search-panels {
+        width: 100%;
+        margin-top: 80px;
+        color: #FFF;
+        background-color: #3B2469;
+        overflow: hidden;
+        -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.12);
+        -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.12);
+        box-shadow: inset 0 3px 5px rgba(0,0,0,.12);
+    .tab-pane {
+        display: none;
+        padding: 20px;
+
+        .btn-success.btn-lg {
+            margin-top: -62px;
+            color: #FFF;
+            background-color: #5CB85C;
+            border: none;
+            font-size: 20px;
+            font-family: Lato,sans-serif;
+            padding: 11px 35px;
+            border-radius: 3px;
+            box-shadow: inset 0 -3px 0 0 rgba(0,0,0,.12)
+        }
+    }
+
+    label {
+        color: #FFF;
+        font-size: 12px;
+        font-family: 'Open Sans',sans-serif;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .tab-pane .form-group input, 
+    .tab-pane .form-group select {
+        height: 40px;
+        border-radius: 3px;
+        background-color: #FFF;
+        border: none! important;
+        font-family: Roboto,sans-serif;
+        font-size: 22px;
+        color: #666;
+    }
+
+    ::-webkit-input-placeholder {
+        font-style: italic !important;
+    }
+}
