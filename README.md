@@ -1,7 +1,8 @@
-# Emailsearch-challenge
+# BeenVerified Email Search Challenge
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+# Overview
+
+This app provides access to BeenVerified's API for searching records via email. For logging in, you can use any email and the password 'BV-API-Challenge'. The app will create a new user key in your local storage to store your reports. 
 
 ## Prerequisites
 
