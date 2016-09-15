@@ -1,1 +1,290 @@
-{{outlet}}
+<div id="report">
+        <div class="map-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-7 col-xs-12">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="thumbnail-lg" style="background-image: url({{ report.images.0.url }})"></div>
+                            </div>
+                            <div class="media-body">
+                                <h1>{{ report.query }}</h1>
+                                <div class="lead">
+                                    {{ report.names.0.full }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 hidden-sm hidden-xs">
+                    <!---                    /////////////////////////////////////////////////////////
+                        //                                                     //
+                        //                 Sidebar Navigation                  //
+                        //                                                     //
+                        /////////////////////////////////////////////////////////
+                        -->
+                    <div class="nav_report affix-top" id="sidebar_report"
+                    style="top: 50px;">
+                        <nav class="hidden-sm hidden-xs" role="navigation">
+                            <ul class="nav nav-stacked">
+                                <li class="active_default" role="presentation">
+                                    <div class="arrow-right">
+                                    </div><a data-ember-action="1184" href=
+                                    "#social"><span class=
+                                    "icon icon-bubble-conversation-5"></span>
+                                    Social &amp; Websites <span class=
+                                    "badge pull-right">{{ report.social.length }}</span></a>
+                                </li>
+                                <li class="" role="presentation">
+                                    <div class="arrow-right">
+                                    </div><a data-ember-action="1185" href=
+                                    "#photos"><span class=
+                                    "icon icon-camera-2"></span> Photos
+                                    <span class="badge pull-right">{{ report.images.length }}</span></a>
+                                </li>
+                                <li class="" role="presentation">
+                                    <div class="arrow-right">
+                                    </div><a data-ember-action="1186" href=
+                                    "#education"><span class=
+                                    "icon icon-books-3"></span> Education
+                                    <span class="badge pull-right">{{ report.educations.length }}</span></a>
+                                </li>
+                                <li class="" role="presentation">
+                                    <div class="arrow-right">
+                                    </div><a data-ember-action="1187" href=
+                                    "#professional"><span class=
+                                    "icon icon-briefcase"></span> Professional
+                                    Background <span class=
+                                    "badge pull-right">{{ report.jobs.length }}</span></a>
+                                </li>
+                            </ul>
+                            
+                        </nav>
+                    </div>
+                    <!--  added non breaking space to prevent sidebar overlap when zoomed out -->
+                    &nbsp;
+                </div>
+                <div class="col-md-9 col-sm-11 col-xs-12" id="content">
+                    <!--
+                        /////////////////////////////////////////////////////////
+                        //                                                     //
+                        //                       Social                        //
+                        //                                                     //
+                        /////////////////////////////////////////////////////////
+                        -->
+                    <div class="section_wrap" id="social">
+                        <h1>Social &amp; Websites</h1>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h4>Social Networks</h4>
+                                <p>We search the deep web to uncover social
+                                media profiles, blogs and websites that owned
+                                by this email address or associated with
+                                it.</p>
+                                <div class="row">
+                                {{#if report.social.length }}
+                                    {{#each report.social as |social|}}
+                                    <div class="col-md-6 col-sm-6">
+                                        <a class="panel panel-default" href=
+                                        "{{ social.url }}" target="_blank">
+                                        <div class="panel-body">
+                                            <div class="media">
+                                                <div class=
+                                                "media-left media-middle">
+                                                    <div class=
+                                                    "pull-left hidden-md">
+                                                    <img class=
+                                                    "social-thumbnail" onerror=
+                                                    "this.src='https://cdn1.beenverified.com/freshness/photos-2.svg'"
+                                                    src=
+                                                    "https://logo.clearbit.com/{{ social.type }}.com"></div>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="details-title">
+                                                        {{ social.type }}
+                                                    </div>
+                                                    <div class="truncate"
+                                                    style="max-width: 227px; white-space: nowrap;"
+                                                    title="{{ social.url }}">
+                                                        {{ social.url }}
+                                                    </div>
+                                                </div>
+                                                <div class=
+                                                "media-right media-middle">
+                                                    <div class="pull-right">
+                                                        <span class=
+                                                        "glyphicon glyphicon-chevron-right">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div></a>
+                                    </div>
+                                    {{/each}}
+                                {{ else }} 
+                                	<div class="well no_results">
+	                                    <span class="icon icon-bubble-attention-6"></span>
+	                                    <h3>No Education Data Was Found</h3>
+	                                    <p>Please start monitoring this report and
+	                                    we'll notify you if we uncover data in the
+	                                    future.</p>
+	                                </div>
+	                            {{/if }} 
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--
+                        /////////////////////////////////////////////////////////
+                        //                                                     //
+                        //                       Photos                        //
+                        //                                                     //
+                        /////////////////////////////////////////////////////////
+                        -->
+                    <div class="section_wrap" id="photos">
+                        <h1>Photos</h1>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p>We search publically available sources, such
+                                as social media profiles, to lookup photos.</p>
+                                <div class="ember-view" id="ember1194">
+                                    <div class="row">
+                                    {{#if report.images.length }}
+                                        {{#each report.images as |image|}}
+                                        <div class=
+                                        "col-md-3 col-sm-3 col-xs-6">
+                                            <div class="thumbnail-img" style=
+                                            "height: 164px;"><img alt=
+                                            "{{ report.names.0.full }} photo" src=
+                                            "{{ image.url }}"
+                                            style="width: 164px;" width=
+                                            "156"></div>
+                                        </div>
+                                        {{/each}}
+                                    {{ else }} 
+                                    	<div class="well no_results">
+		                                    <span class="icon icon-bubble-attention-6"></span>
+		                                    <h3>No Education Data Was Found</h3>
+		                                    <p>Please start monitoring this report and
+		                                    we'll notify you if we uncover data in the
+		                                    future.</p>
+		                                </div>
+		                            {{/if }} 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--
+                        /////////////////////////////////////////////////////////
+                        //                                                     //
+                        //                   Education                         //
+                        //                                                     //
+                        /////////////////////////////////////////////////////////
+                        -->
+                    <div class="section_wrap" id="education">
+                        <h1>Education</h1>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p>According to our social web search, these
+                                are educational institutions that may have
+                                attended.</p>
+
+                            {{#if report.educations.length }}
+                                {{#each report.educations as |education|}}
+                                <div class="panel panel-default">
+	                                <div class="panel-body panel_title">
+	                                    <h4 class="flat">
+	                                    	{{ education.school }}
+	                                    </h4>
+	                                </div>
+		                            <div class="boxes">
+		                                <div class="row">
+		                                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                                        <div class="details_title">DEGREE</div>
+		                                        {{#if education.degree }}{{ education.degree }}{{ else }}N/A{{/if}}
+		                                    </div>
+		                                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                                        <div class="details_title">ATTENDED</div>
+		                                        {{ education.attended.start }} to {{ education.attended.end }}
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+	                            {{/each}}
+                            {{ else }} 
+                            	<div class="well no_results">
+                                    <span class="icon icon-bubble-attention-6"></span>
+                                    <h3>No Education Data Was Found</h3>
+                                    <p>Please start monitoring this report and
+                                    we'll notify you if we uncover data in the
+                                    future.</p>
+                                </div>
+                            {{/if }} 
+	                        </div>
+                        </div>
+                    </div><!--
+                        /////////////////////////////////////////////////////////
+                        //                                                     //
+                        //                   Professional                      //
+                        //                                                     //
+                        /////////////////////////////////////////////////////////
+                        -->
+                    <div class="section_wrap" id="professional">
+                        <h1>Professional Background</h1>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h4>Career</h4>
+                                <p>According to our social web search, these
+                                are jobs and positions that they may have
+                                held.</p>
+                           {{#if report.jobs.length }}
+                                {{#each report.jobs as |job|}}
+                                <div class="panel panel-default">
+                                    <div class="panel-body panel_title">
+                                        <h4 class="flat">
+                                            {{ job.company }}
+                                        </h4>
+                                    </div>
+                                    <div class="boxes">
+                                        <div class="row">
+                                            <div class=
+                                            "col-md-6 col-sm-6 col-xs-12">
+                                                <div class="details_title">
+                                                    TITLE
+                                                </div>
+                                                {{ job.title }}
+                                            </div>
+                                            <div class=
+                                            "col-md-6 col-sm-6 col-xs-12">
+                                                <div class="details_title">
+                                                    INDUSTRY
+                                                </div>{{#if job.title.length }}{{ job.title }}{{else}}N/A{{/if}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            {{ else }} 
+                            	<div class="well no_results">
+                                    <span class="icon icon-bubble-attention-6"></span>
+                                    <h3>No Education Data Was Found</h3>
+                                    <p>Please start monitoring this report and
+                                    we'll notify you if we uncover data in the
+                                    future.</p>
+                                </div>
+                            {{/if }} 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>{{outlet}}
+
+
+<!--
+Changed alt tags on images to be profile's name instead of url
+-->

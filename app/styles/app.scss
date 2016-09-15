@@ -2,6 +2,8 @@
 @import 'navbar';
 @import 'loader';
 @import 'search';
+@import 'report';
+@import 'animations';
 
 * { font-family: Lato,sans-serif; }
 
@@ -9,6 +11,41 @@
    padding: 0 !important;
 }
 
-main {
-	margin-top: 80px;
+body {background: url("/assets/img/grey.png");}
+
+#dashboard {
+   padding-top: 50px; 
+}
+
+.login-form {
+	margin-top: 50px;
+	input {
+		margin: 10px 0;
+	}
+	.panel { background: #fff; }
+	.panel-body {
+		padding: 50px 20px 60px;
+	}
+}
+
+#dashboard-btn {
+    height: 40px;
+    line-height: 35px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #d3c6c6;
+    display: inline-block;
+    border: 2px solid;
+    padding: 0 20px;
+    border-radius: 25px;
+    float: right;
+
+    &:hover {
+    	color: #fff;
+    	transition: 0.2s color ease;
+    }
+
+    &:hover, &:focus {
+    	text-decoration: none;
+    }
 }

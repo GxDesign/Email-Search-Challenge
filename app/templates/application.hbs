@@ -1,6 +1,21 @@
-<!-- Insert nav component -->
-{{nav-search searchTypes=model.searchTypes emailValidation=model.emailValidation}}
+<!-- Insert nav component with controller actions -->
+{{nav-search searchTypes=model.searchTypes emailValidation=model.emailValidation routeToSearch="routeToSearch" startLoading="startLoading" stopLoading="stopLoading" passReportToSearch="passReportToSearch" }}
 
 <main>
-	{{outlet}}
+	{{# if loading}}
+	<div class="loader-wrapper">
+		<div class="loading-bg">
+		    <div class="loader"></div>
+		    <div class="loading-icon">
+		        <span class="glyphicon glyphicon-envelope"></span>
+		    </div>
+		</div>
+		<div class="searching-for text-center">
+	        <span class="lead">Searching for </span>
+	        <span class="searching-for-subject lead strong">{{ email }}</span>
+	    </div>
+	</div>
+	{{ else }}
+		{{outlet}}
+	{{/if}}
 </main>

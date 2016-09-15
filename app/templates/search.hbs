@@ -1,42 +1,57 @@
-<h2>search page: {{ model.query }}</h2>
+{{#if report}}
+<section id="search-results" class="animated fadeInDown">
+	<div class="col-lg-10 col-lg-offset-1 col-md-12">
+		{{#link-to "report" (query-params email=report.query) class="panel panel-default"}}
+			<div class="panel-body">
+		        <div class="row">
+		            <div class="col-md-1 col-sm-2 hidden-xs">
+		                <div class="thumbnail" style="background-image: url({{ report.images.0.url }})">
+		                </div>
+		            </div>
+		            <div class="col-md-4 col-sm-6 col-xs-10">
+		                <div class="details-title">Email</div>
+		                <div class="email">{{ report.query }}</div>
+		                <div class="">
+		                    <div>
+		                       {{ report.names.0.full }}
+		                    </div><br>
 
-<div class="col-lg-10 col-lg-offset-1 col-md-12" id="search-results">
-	{{#link-to "report" (query-params email=model.query) class="panel panel-default"}}                   
-		<div class="panel-body">
-	        <div class="row">
-	            <div class="col-md-1 col-sm-2 hidden-xs">
-	                <div class="thumbnail">
-	                      <span class="icon icon-user-2-1"></span>
-	                </div>
-	            </div>
-	            <div class="col-md-4 col-sm-6 col-xs-10">
-	                <div class="details_title">Email</div>
-	                <div class="email">gr.martiferernez49@rr.com</div>
-	                <div class="">
-	                    <div>
-	                            N/A
-	                    </div><br>
+		                </div>
+		            </div>
+		            <div class="col-md-3 hidden-xs hidden-sm">
+		                <div class="details-title">Aliases</div>
+		                    {{#if report.names.length}}
+		                    	{{#each report.names as |name|}}
+									{{ name.full }}<br>
+		                    	{{/each}}
+							{{ else }}
+								NA
+							{{/if}}
 
-	                </div>
-	            </div>
-	            <div class="col-md-3 hidden-xs hidden-sm">
-	                <div class="details_title">Aliases</div>
-	                    N/A
-
-	            </div>
-	            <div class="col-md-1 col-sm-3 hidden-xs">
-	                <div class="details_title">Profiles</div>
-	                <div style="margin-bottom: 4px;">
-	                        N/A
-	                </div>
-	                <div class="details_title">Photos</div>
-	                  N/A
-	            </div>
-	            <div class="col-md-3 col-sm-1 col-xs-2">
-	                <button href="#" class="btn btn-success hidden-xs hidden-sm pull-right">ACCESS REPORT <span class="glyphicon glyphicon-chevron-right"></span></button>
-	                <div class="pull-right visible-xs visible-sm resp"><span class="glyphicon glyphicon-chevron-right gly-lg"></span></div>
-	            </div>
-	        </div>
-	    </div>
-	{{/link-to}}             
-</div>
+		            </div>
+		            <div class="col-md-1 col-sm-3 hidden-xs">
+		                <div class="details-title">Profiles</div>
+		                <div style="margin-bottom: 4px;">
+		                    {{#if report.social.length}}
+								{{ report.social.length }}
+							{{ else }}
+								NA
+							{{/if}}
+		                </div>
+		                <div class="details-title">Photos</div>
+		                    {{#if report.images.length}}
+								{{ report.images.length }}
+							{{ else }}
+								NA
+							{{/if}}
+		            </div>
+		            <div class="col-md-3 col-sm-1 col-xs-2">
+		                <button href="#" class="btn btn-success hidden-xs hidden-sm pull-right">ACCESS REPORT <span class="glyphicon glyphicon-chevron-right"></span></button>
+		                <div class="pull-right visible-xs visible-sm resp"><span class="glyphicon glyphicon-chevron-right gly-lg"></span></div>
+		            </div>
+		        </div>
+		    </div>
+		{{/link-to}}             
+	</div>
+</section>
+{{/if}}

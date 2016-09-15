@@ -1,5 +1,69 @@
-<h1>hello from index</h1>
-{{#bs-button type="primary" icon="glyphicon glyphicon-download"}}
-Downloads
-{{/bs-button}}
-  {{input type="text" value=search action="query"}}
+<section class="container" id="dashboard">
+	<div class="row">
+		<div class="col-md-8" id="recent-searches">
+	
+		    <h3>Recent Reports <small>  {{#if recentSearches.length }}{{ recentSearches.length }} reports total{{/if}}</small></h3>
+		    <hr>
+		    {{#if recentSearches.length }}
+			<div class="panel panel-default">
+			    <div class="panel-body">
+			        <table class="table table-hover">
+			            <thead>
+			                <tr>
+			                    <th class="hidden-xs"></th>
+			                    <th>Name</th>
+			                    <th class="visible-lg">Type</th>
+			                    <th class="hidden-xs">Created</th>
+			                    <th>Actions</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			            {{#each recentSearches as |report|}}
+			                <tr>
+			                    <td class="hidden-xs"><div class="report_item_thumbnail" style="background-image: url({{ report.images.0.url }})"></div></td>
+			                    <td>
+			                        <strong></strong>
+			                            <strong><!----></strong>
+			                            <div class="truncate" style="max-width: 166px; white-space: nowrap;" title="{{ report.query }}">
+			                                <strong>{{ report.query }}</strong>
+			                            </div><strong></strong>
+			                        <small class="text-uppercase">{{ report.names.0.full }}</small>
+			                    </td>
+			                    <td class="visible-lg">Email Report</td>
+			                    <td class="hidden-xs"><i>{{moment-from-now report.created_at hideSuffix=true}} ago</i></td>
+			                    <td>
+			                        <div class="btn-group">
+			                            {{#link-to "report" (query-params email=report.query) class="btn btn-default"}}View Report{{/link-to}}
+			                        </div>
+			                    </td>
+			                </tr>
+			             {{/each}}
+			            </tbody>
+			        </table>
+			    </div>
+			</div>
+		{{ else }}
+			<p>No searches yet. Get started by clicking on the email tab up top and entering a valid email</p>
+	    {{/if}}
+		</div>
+		<div class="col-md-4">
+			<div id="sidebar">
+				<div class="panel panel-default">
+				    <div class="panel-body">
+		                <div class="media">
+		                    <div class="media-left">
+		                        <div class="thumbnail_user">
+		                            <span class="icon icon-user-2-1"></span>
+		                        </div>
+		                    </div>
+		                    <div class="media-body">
+		                        <strong>Username:</strong><br>{{ username }}
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <button class="btn btn-block" {{ action 'logout' }}>Logout</button>
+            </div>
+        </div>
+	</div>
+</section>

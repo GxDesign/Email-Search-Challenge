@@ -1,37 +1,27 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Route.extend({
-	model() {
+	model() {	
+		var username = localStorage.activeUser;
 		const links = this.get('links');
 		return {
-			searchTypes: links.getSearchTypes(),
-			emailValidation: {
-				invalid: false,
-				hasError: Ember.computed('invalid', function(){
-					debugger;
-					return this.get('invalid');
-				}),
-				message: "Please provide a valid email."
-			}
+			searchTypes: links.getSearchTypes()
 		};
 	},
-
 	actions: {
-		searchEmail: function(form){
-			var email = form.email;
-			var self = this;
-			if(form.email) {
-				var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-				if(regex.test(form.email)){
-					self.model().emailValidation.invalid = false;
-					self.transitionTo('search', {queryParams: {email: form.email}});
-				} else {
-					self.model().emailValidation.invalid = true;
-				}
-				var model = self.model();
-			}
-	    	
-	    }
+		routeToSearch: function(query) {
+			this.transitionTo('search', {queryParams: {email: query }});
+		},
+		startLoading: function() {
+			this.controllerFor('application').set("loading", true);
+		},
+		stopLoading: function() {
+			this.controllerFor('application').set("loading", false);
+		},
+		passReportToSearch: function(report){
+			this.controllerFor('search').set("report", report);
+		}
 	},
 
     links: Ember.inject.service()

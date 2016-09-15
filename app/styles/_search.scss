@@ -1,4 +1,5 @@
 #search-results {
+	padding: 40px 0;
 	.panel {
 	    color: #333;
 	    padding: 20px;
@@ -21,5 +22,31 @@
 		    color: #ddd;
 		    font-weight: 400;
 		}
+
+		.thumbnail {
+			background-size: contain;
+		}
+
+		.details-title {
+			font-weight: bold;
+			font-size: 12px;
+		    color: #333;
+		    font-weight: 700;
+		    text-transform: uppercase;
+		}
+
+		.email {
+			font-size: 21px;
+		}
+	}
+}
+
+
+
+.cors-error {
+	padding-top:20px;
+	.bg-danger {
+		padding: 30px;
+		font-size: 18px;
 	}
 }

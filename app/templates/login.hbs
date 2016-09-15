@@ -1,1 +1,21 @@
-{{outlet}}
+{{#if isLoggedIn}}
+  <button {{action "logout"}}>Log Out</button>
+{{/if}}
+
+
+<div class="container">
+	<div class="col-md-5 login-form">
+		<div class="panel panel-default">
+			<div class="panel-body">
+			    <h2>Welcome to BeenVerified!</h2><span>Please log in to start searching</span>
+				<!-- the value properties become accessible through the loginController -->
+				<form {{action "login" on="submit"}}>
+				  {{input type="text" class="form-control" placeholder="Username (any email)" value=username}}
+				  {{input type="password" class="form-control" placeholder="Password (BV-API-Challenge)" value=password}}
+				  <button type="submit"  class="btn btn-primary btn-block">Login</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
