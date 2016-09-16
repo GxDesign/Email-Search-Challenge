@@ -15,16 +15,14 @@ export default Ember.Service.extend({
 		if(storedReports && storedReports.filterBy('query', email).length > 0){
 			result = storedReports.filterBy('query', email)[0];
 			result.created_at = new Date();
-			storedReports.splice(storedReports.indexOf(result), 1);
-			storedReports.unshift(result);
-
+			
 			// save new order of past reports
 			localStorage[username + "_reports"] = JSON.stringify(storedReports); 
 
 			console.log("retrieved saved result:", result);
 			callback(result);
 		} else {
-			
+
 			// if the report doesnt exist in localStorage, we'll attempt an ajax to the API.
 			// if it fails, we will use sample reports
 

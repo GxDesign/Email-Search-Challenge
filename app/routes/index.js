@@ -7,6 +7,9 @@ export default Ember.Route.extend({
 		// get recent searches on refresh
 		if(localStorage[username + "_reports"]){
 			var recentSearches = JSON.parse(localStorage[username  + "_reports"]);
+			recentSearches  =  recentSearches.sort(function(a,b){
+			  return new Date(b.created_at) - new Date(a.created_at);
+			});
 		} else {
 			var recentSearches = [];
 		}
