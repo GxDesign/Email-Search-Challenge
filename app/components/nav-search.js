@@ -35,14 +35,20 @@ export default Ember.Component.extend({
 	  	            // start loader 
 				  	self.sendAction('startLoading');
 
-                    // get results, then stop the loader, we'll use 'report' since 
+                    // get results, then stop the loader
 				  	// we know its a single object
-	  	            var report = searchResults.getSearchResults(form.email);
+	  	            searchResults.getSearchResults(form.email, function(result) {
+					    if (result) {
+					        self.sendAction('passReportToSearch', result);
+		  	            	self.sendAction('stopLoading');
+					    }
+					    // code error handler here
+					});
 
-	  	            // using timeout to show off loader. needs a promise
-	  	            setTimeout(function(){
-		  	            self.sendAction('stopLoading');
-		  	        }, 2000);
+	  	         //    // using timeout to show off loader. needs a promise
+	  	         //    setTimeout(function(){
+		  	        //     self.sendAction('stopLoading');
+		  	        // }, 2000);
 
 		  	        self.sendAction('passReportToSearch', report);
 

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-	getSearchResults(email) {
+	getSearchResults(email, callback) {
 		var username = localStorage.activeUser;
         var storedReports, result;
 
@@ -22,13 +22,13 @@ export default Ember.Service.extend({
 			localStorage[username + "_reports"] = JSON.stringify(storedReports); 
 
 			console.log("retrieved saved result:", result);
-			return result;
+			callback(result);
 		} else {
+			
 			// if the report doesnt exist in localStorage, we'll attempt an ajax to the API.
 			// if it fails, we will use sample reports
 
-
-			$.ajax({
+		    $.ajax({
 				type: 'GET',
 			    url: 'https://query.datadeckio.com/email',
 			    dataType :"json",
@@ -59,14 +59,15 @@ export default Ember.Service.extend({
 
 			    },
 			    success: function(data) {
-			      // remove sample data, we're live!
-			      delete localStorage.sampleReports;
 			      console.log("new search result:", data);
 			      reformatResults(data);
 			    }
 			}).done(function(){
-				return result;
+				callback(result);
 			});
+
+
+
             
             var reformatResults = function(data) {
             	result = data;
