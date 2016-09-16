@@ -12,11 +12,23 @@ export default Ember.Route.extend({
 		  applicationController.set('savedTransition', transition);
 		  this.transitionTo('login');
 		} else {
-		  applicationController.login();  
+		    applicationController.login();  
 
-		  // parse any queryparams in case of page reload
-		  var report = searchResults.getSearchResults(transition.queryParams.email);  
-		  this.controllerFor('report').set("report", report);
-		}
+		 
+		    self.controllerFor('application').set("loading", true);
+
+		    // parse any queryparams in case of page reload
+		    if(transition.queryParams.email){
+		        // get results, then stop the loader
+		  	    // we know its a single object
+	            searchResults.getSearchResults(transition.queryParams.email, function(result) {
+				    if (result) {
+				        self.controllerFor('report').set("report", result);
+	  	            	self.controllerFor('application').set("loading", false);
+				    }
+				    // code error handler here
+				}); 
+			}
+	    }
 	}
 });
