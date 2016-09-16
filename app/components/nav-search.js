@@ -1,4 +1,5 @@
 import Ember from 'ember';
+/* globals $ */
 
 export default Ember.Component.extend({
 
@@ -18,14 +19,14 @@ export default Ember.Component.extend({
 				$(panel_id + "-panel").nextAll().slideUp();
 				$(panel_id + "-panel").toggleClass("active");
 				$(panel_id + "-panel").slideToggle();
-			};
+			}
 		},
 		searchEmail: function(form){
 			var email = form.email;
 			var self = this;
-			if(form.email) {
+			if(email) {
 				var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-				if(regex.test(form.email)){
+				if(regex.test(email)){
                     $(".tab-pane").slideUp();
                     $(".nav-tabs li").removeClass("active");
 
@@ -37,7 +38,7 @@ export default Ember.Component.extend({
 
                     // get results, then stop the loader
 				  	// we know its a single object
-	  	            searchResults.getSearchResults(form.email, function(result) {
+	  	            searchResults.getSearchResults(email, function(result) {
 					    if (result) {
 					        self.sendAction('passReportToSearch', result);
 		  	            	self.sendAction('stopLoading');
@@ -45,15 +46,8 @@ export default Ember.Component.extend({
 					    // code error handler here
 					});
 
-	  	         //    // using timeout to show off loader. needs a promise
-	  	         //    setTimeout(function(){
-		  	        //     self.sendAction('stopLoading');
-		  	        // }, 2000);
-
-		  	        self.sendAction('passReportToSearch', report);
-
 					// cant transition, send action to application router
-					self.sendAction('routeToSearch', form.email);
+					self.sendAction('routeToSearch', email);
 
 				} else {
 					self.set('emailValidator.invalid', true);

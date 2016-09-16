@@ -1,4 +1,5 @@
 import Ember from 'ember';
+/* globals $ */
 
 export default Ember.Service.extend({
 	getSearchResults(email, callback) {
@@ -15,7 +16,7 @@ export default Ember.Service.extend({
 		if(storedReports && storedReports.filterBy('query', email).length > 0){
 			result = storedReports.filterBy('query', email)[0];
 			result.created_at = new Date();
-			
+
 			// save new order of past reports
 			localStorage[username + "_reports"] = JSON.stringify(storedReports); 
 

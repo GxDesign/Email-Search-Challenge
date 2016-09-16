@@ -33,6 +33,6 @@ export default Ember.Route.extend({
 	model( params, transition ) {
 		return {
 			query: transition.queryParams.email
-		}
+		};
 	}
 });

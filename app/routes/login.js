@@ -17,18 +17,20 @@ export default Ember.Route.extend({
 				
 				// Set active User
                 localStorage.activeUser = username.toLowerCase();
-                 
+
+                
 				var applicationController = this.controllerFor('application');
-				var indexController = this.controllerFor('index');
 				var transition = applicationController.get('savedTransition');
 
+				var recentSearches;
+
 				if(localStorage[username + "_reports"]){
-					var recentSearches = JSON.parse(localStorage[username  + "_reports"]);
+					recentSearches = JSON.parse(localStorage[username  + "_reports"]);
 					recentSearches  =  recentSearches.sort(function(a,b){
 					  return new Date(b.created_at) - new Date(a.created_at);
 					});
 				} else {
-					var recentSearches = [];
+					recentSearches = [];
 				}
                  
                 applicationController.set("username", username);

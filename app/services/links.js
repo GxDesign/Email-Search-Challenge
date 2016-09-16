@@ -7,6 +7,6 @@ export default Ember.Service.extend({
 	    		{text: "Phone", icon: "phone", panel_id: 'search-phone', disabled: true},
 	    		{text: "Property", icon: "home", panel_id: 'search-property', disabled: true},
 	    		{text: "Email", icon: "envelope", panel_id: 'search-email'}
-    		]
+    		];
 	}
 });

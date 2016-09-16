@@ -1,9 +1,7 @@
 import Ember from 'ember';
-import moment from 'moment';
 
 export default Ember.Route.extend({
 	model() {	
-		var username = localStorage.activeUser;
 		const links = this.get('links');
 		return {
 			searchTypes: links.getSearchTypes()
