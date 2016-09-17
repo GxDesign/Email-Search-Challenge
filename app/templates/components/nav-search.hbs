@@ -11,7 +11,7 @@
             	</span>
             </a>
         </div>
-        
+        {{#if isLoggedIn }}
         <div class="col-md-4 collapse navbar-collapse">
 		    <ul role="tablist" class="nav nav-tabs" id="search-options">
 			{{#each searchTypes as |type|}}
@@ -29,6 +29,7 @@
         <div class="header-links col-md-4">
             {{#link-to "index" id="dashboard-btn"}}Dashboard{{/link-to}}
         </div>
+        {{/if}}
     </div>
 </nav> 
 
